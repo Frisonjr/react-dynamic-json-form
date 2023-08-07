@@ -9,7 +9,6 @@ import {
   SubFormList,
   SubFormString,
   SubFormMultiCheck,
-  SubFormMaskedInput,
   SubFormAutoCompleteApi,
 } from "..";
 import SubFormTimePicker from "../SubFormTimePicker";
@@ -101,13 +100,13 @@ const SelectFieldType: React.FC<Props> = ({
             field={field}
           />
         )}
-        {field.type === "masked" && (
+        {/* {field.type === "masked" && (
           <SubFormMaskedInput
             key={fieldIndex}
             disableAll={mode === "in_page"}
             field={field}
           />
-        )}
+        )} */}
         {field.type === "autocomplete" && (
           <SubFormAutoCompleteApi
             key={fieldIndex}

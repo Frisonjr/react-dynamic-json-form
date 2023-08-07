@@ -2,14 +2,13 @@ import { Input } from "antd";
 import { Form } from "antd";
 import { capitalize } from "lodash";
 import React from "react";
-require("./SubFormEmail.less");
 
 interface Props {
   field: Models.CustomDynamicData.Field;
   disableAll: boolean;
   key: number;
 }
-const SubFormEmail: React.FC<Props> = ({ key,field, disableAll }) => {
+const SubFormEmail: React.FC<Props> = ({ key, field, disableAll }) => {
   return (
     <Form.Item
       key={key}
@@ -18,7 +17,7 @@ const SubFormEmail: React.FC<Props> = ({ key,field, disableAll }) => {
       rules={[
         {
           required: field.required,
-          message: `${capitalize(field.name)} é obrigatório!`,
+          message: `${capitalize(field.name as string)} é obrigatório!`,
         },
         {
           pattern:
