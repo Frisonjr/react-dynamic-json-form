@@ -7,10 +7,12 @@ require("./SubFormEmail.less");
 interface Props {
   field: Models.CustomDynamicData.Field;
   disableAll: boolean;
+  key: number;
 }
-const SubFormEmail: React.FC<Props> = ({ field, disableAll }) => {
+const SubFormEmail: React.FC<Props> = ({ key,field, disableAll }) => {
   return (
     <Form.Item
+      key={key}
       name={field.name}
       label={"E-mail"}
       rules={[
