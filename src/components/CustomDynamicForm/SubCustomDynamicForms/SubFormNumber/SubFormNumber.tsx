@@ -1,5 +1,5 @@
 import { Form, InputNumber } from "antd";
-import * as React from 'react';
+import * as React from "react";
 import defaultFormRules from "../../../../utils/defaultFormRules";
 import { ExtraStringField } from "..";
 
@@ -26,6 +26,8 @@ const SubFormNumber: React.FC<Props> = ({ field, disableAll, key }) => {
         ]}
       >
         <InputNumber
+          max={field.max}
+          min={field.min}
           className="input-size"
           placeholder={`Informe ${field.label.toLowerCase()}`}
           disabled={disableAll}
