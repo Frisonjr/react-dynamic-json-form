@@ -1,13 +1,10 @@
-import * as React from 'react'
-
-// require('./styles.less')
-
-import { AutoComplete as AntAutoComplete, Input, Space } from 'antd'
-import { debounce } from 'lodash'
-import { mdiClose, mdiLoading, mdiMagnify } from '@mdi/js'
-import Page, { buildCleanPage } from '../../utils/Page'
-import MaterialIcon from '../MaterialIcon'
-import deshumanize from '../../utils/deshumanize'
+import * as React from "react";
+import { AutoComplete as AntAutoComplete, Input, Space } from "antd";
+import { debounce } from "lodash";
+import { mdiClose, mdiLoading, mdiMagnify } from "@mdi/js";
+import Page, { buildCleanPage } from "../../utils/Page";
+import MaterialIcon from "../MaterialIcon";
+import deshumanize from "../../utils/deshumanize";
 
 const CreateAutoComplete = function <T>({
   label,
@@ -16,82 +13,82 @@ const CreateAutoComplete = function <T>({
   limit = 5,
   adaptKey = (key) => key,
 }: Search.AutoCompleteOptions<T>) {
-  const cleanPage = buildCleanPage<T>()
+  const cleanPage = buildCleanPage<T>();
 
   const AutoComplete: React.FC<Search.AutoCompleteProps<T>> = ({
-    value: formControlValue = '',
+    value: formControlValue = "",
     onChange = () => {},
     onSelect = () => {},
     onClear = () => {},
     disabled = false,
     allowClear = false,
     style = {},
-    placeholder = '',
+    placeholder = "",
   }) => {
-    const [page, setPage] = React.useState(cleanPage)
-    const [keyword, setKeyword] = React.useState('')
-    const [searching, setSearching] = React.useState(false)
-    const [value, setValue] = React.useState<string | undefined>()
+    const [page, setPage] = React.useState(cleanPage);
+    const [keyword, setKeyword] = React.useState("");
+    const [searching, setSearching] = React.useState(false);
+    const [value, setValue] = React.useState<string | undefined>();
 
     const options = React.useMemo(() => {
       return page.results.map(toOptions).map(({ label, value }) => ({
         label,
         value: label,
         extra: value,
-      }))
-    }, [page.results])
+      }));
+    }, [page.results]);
 
     const _request = React.useCallback(async (keyword?: any) => {
-      setSearching(true)
-      setKeyword(keyword)
+      setSearching(true);
+      setKeyword(keyword);
       try {
         const { data } = await request({
           ...adaptKey(keyword),
           limit,
-        })
-        const page = new Page(data)
-        setPage(page as any)
+        });
+        const page = new Page(data);
+        setPage(page as any);
       } catch {
-        setPage(cleanPage)
-        setKeyword('')
+        setPage(cleanPage);
+        setKeyword("");
       } finally {
-        setSearching(false)
+        setSearching(false);
       }
-    }, [])
+    }, []);
 
-    const onSearchThrottle = debounce((key: any) => _request(key), 700)
+    const onSearchThrottle = debounce((key: any) => _request(key), 700);
 
     const trigerChange = React.useCallback(
-      (_, { extra, value, label }) => {
-        setValue(value)
-        onSelect({ label, value: extra })
-        onChange(extra)
+      (_: any, { extra, value, label }: any) => {
+        setValue(value);
+        onSelect({ label, value: extra });
+        onChange(extra);
       },
       [onChange, onSelect, setValue]
-    )
+    );
 
     const loadInitialOptions = React.useCallback(async () => {
-      await _request('')
-      setValue(undefined)
-    }, [_request])
+      await _request("");
+      setValue(undefined);
+    }, [_request]);
 
     React.useEffect(() => {
-      setValue(formControlValue)
-    }, [formControlValue])
+      setValue(formControlValue);
+    }, [formControlValue]);
 
     return (
       <div
         style={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
         }}
         id={`auw-${deshumanize(label)}`}
         className={`auto-complete-wrapper`}
       >
         <AntAutoComplete
           searchValue={formControlValue}
-          style={{ width: '100%', ...style }}
+          style={{ width: "100%", ...style }}
           showSearch={false}
           showArrow={false}
           disabled={disabled}
@@ -107,7 +104,7 @@ const CreateAutoComplete = function <T>({
               <h4
                 style={{
                   color: `var(--${
-                    keyword.length === 0 ? 'info' : 'danger'
+                    keyword.length === 0 ? "info" : "danger"
                   }-color)`,
                   fontWeight: 300,
                 }}
@@ -134,7 +131,7 @@ const CreateAutoComplete = function <T>({
                 onClick={
                   allowClear && value
                     ? () => {
-                        onClear()
+                        onClear();
                       }
                     : () => {}
                 }
@@ -156,10 +153,10 @@ const CreateAutoComplete = function <T>({
           />
         </AntAutoComplete>
       </div>
-    )
-  }
+    );
+  };
 
-  return React.useMemo(() => AutoComplete, [])
-}
+  return React.useMemo(() => AutoComplete, []);
+};
 
-export default CreateAutoComplete
+export default CreateAutoComplete;
