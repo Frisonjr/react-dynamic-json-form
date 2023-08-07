@@ -156,6 +156,7 @@ const CreateAutoComplete = function <T>({
     );
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(() => AutoComplete, []);
 };
 
