@@ -10,6 +10,12 @@ const dataFormClient = [
         required: true,
       },
       {
+        label: "Last name",
+        name: "last_name",
+        type: "string",
+        rows: 1,
+      },
+      {
         label: "Birth date",
         name: "birth_date",
         type: "date",
