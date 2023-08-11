@@ -13,6 +13,12 @@ There are lots of field types, all of the with and extra label field and conditi
 
 
 
+Check it out you just need to download the packages and run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 
@@ -20,6 +26,4 @@ There are lots of field types, all of the with and extra label field and conditi
 
 
 
-
-
-## still in progress
+**Note: needs few tweaks, but already works!**
