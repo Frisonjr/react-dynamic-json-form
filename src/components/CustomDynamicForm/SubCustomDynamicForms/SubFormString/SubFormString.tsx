@@ -10,9 +10,9 @@ interface Props {
 const SubFormString: React.FC<Props> = ({ field, disableAll, key }) => {
   const placeholderLabel = React.useMemo(() => {
     if (field.label.length > 0) {
-      return `Informe ${field.label.toLowerCase()}`
+      return `Inform ${field.label.toLowerCase()}`
     } else {
-      return 'Digite aqui a informação'
+      return 'Inform'
     }
   }, [field.label])
 

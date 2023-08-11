@@ -35,7 +35,7 @@ const SubFormSelect: React.FC<Props> = ({ field, disableAll, key, form }) => {
           getPopupContainer={() =>
             document.getElementById(`select-select-${key}`)!!
           }
-          placeholder="Selecione..."
+          placeholder="Select..."
           disabled={disableAll}
         >
           {field.options &&

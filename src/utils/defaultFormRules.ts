@@ -1,5 +1,5 @@
 const defaultFormRules = [
-  { required: true, message: "Este campo é obrigatório!" },
+  { required: true, message: "Required field!" },
 ];
 
 export default defaultFormRules;

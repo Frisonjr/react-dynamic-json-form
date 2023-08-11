@@ -51,7 +51,7 @@ const SubFormList: React.FC<Props> = ({ field, disableAll, key }) => {
                                     `select-select-${key}`
                                   )!!
                                 }
-                                placeholder="Selecione..."
+                                placeholder="Select..."
                                 disabled={disableAll}
                               >
                                 {options.map((option, k) => (
@@ -72,7 +72,7 @@ const SubFormList: React.FC<Props> = ({ field, disableAll, key }) => {
                                   type: 'number',
                                   max: max,
                                   min: min,
-                                  message: `Valor inválido! O valor deve estar entre ${min} e ${max}`,
+                                  message: `The value must be between ${min} and ${max}`,
                                 },
                               ]}
                             >

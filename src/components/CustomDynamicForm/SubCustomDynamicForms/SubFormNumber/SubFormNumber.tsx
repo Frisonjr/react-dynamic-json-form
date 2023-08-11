@@ -20,7 +20,7 @@ const SubFormNumber: React.FC<Props> = ({ field, disableAll, key }) => {
             type: "number",
             max: field.max,
             min: field.min,
-            message: `Valor inválido! O valor deve estar entre ${field.min} e ${field.max}`,
+            message: `The value must be between ${field.min} and ${field.max}`,
           },
           ...(field.required ? defaultFormRules : []),
         ]}
@@ -29,7 +29,7 @@ const SubFormNumber: React.FC<Props> = ({ field, disableAll, key }) => {
           max={field.max}
           min={field.min}
           className="input-size"
-          placeholder={`Informe ${field.label.toLowerCase()}`}
+          placeholder={`Inform ${field.label.toLowerCase()}`}
           disabled={disableAll}
           value={field.value ? field.value : undefined}
         />

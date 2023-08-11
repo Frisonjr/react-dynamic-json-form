@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { Divider, Form, FormInstance, Typography } from "antd";
+import React, { useState } from "react";
+import { Button, Divider, Form, FormInstance, Modal, Typography } from "antd";
 import SelectFieldType from "./SubCustomDynamicForms/SelectFieldType";
 import "./CustomDynamicForm.scss";
 
 interface Props {
-  form?: FormInstance;
+  form: FormInstance;
   onFinish?: (values: any) => void;
   initialValues?: Models.CustomDynamicData;
   mode: "in_page" | "modal";
@@ -26,9 +26,26 @@ const CustomDynamicForm: React.FC<Props> = ({
     };
   }, [rawValues]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const formValues = form.getFieldsValue();
+  const keyValuePairs = Object.entries(formValues);
+
   return (
     <>
       <Form
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
         className="group-form-dynamic"
         layout="vertical"
         form={form}
@@ -57,6 +74,37 @@ const CustomDynamicForm: React.FC<Props> = ({
         ))}
         {extraFieldSet}
       </Form>
+
+      <Button
+      style={{
+        marginBottom: 20,
+      }}
+        onClick={() => {
+          form.submit();
+          setIsModalOpen(true);
+        }}
+        type="primary"
+      >
+        Submit
+      </Button>
+
+      <Modal
+        title="Your form values"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <ul>
+          {keyValuePairs.map(
+            ([key, value]) =>
+              value !== undefined && (
+                <li key={key}>
+                  <strong>{key}:</strong> {String(value)}
+                </li>
+              )
+          )}
+        </ul>
+      </Modal>
     </>
   );
 };

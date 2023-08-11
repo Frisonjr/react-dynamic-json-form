@@ -100,13 +100,6 @@ const SelectFieldType: React.FC<Props> = ({
             field={field}
           />
         )}
-        {/* {field.type === "masked" && (
-          <SubFormMaskedInput
-            key={fieldIndex}
-            disableAll={mode === "in_page"}
-            field={field}
-          />
-        )} */}
         {field.type === "autocomplete" && (
           <SubFormAutoCompleteApi
             key={fieldIndex}

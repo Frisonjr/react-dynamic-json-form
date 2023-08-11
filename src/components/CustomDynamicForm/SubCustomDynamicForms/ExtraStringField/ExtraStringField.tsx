@@ -16,7 +16,7 @@ const ExtraStringField: React.FC<Props> = ({ field, disableAll }) => {
       <Input.TextArea
         rows={2}
         className="input-size"
-        placeholder={`Informe ${field.extra_label!.toLowerCase()}`}
+        placeholder={`Inform ${field.extra_label!.toLowerCase()}`}
         disabled={disableAll}
       />
     </Form.Item>

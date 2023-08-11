@@ -11,7 +11,7 @@ interface Props {
 }
 const SubFormDatePicker: React.FC<Props> = ({ field, disableAll, key }) => {
   return (
-    <div key={key} style={{ position: "relative" }} id={`select-data-${key}`}>
+    <div key={key} style={{ position: "relative" }} id={`select-date-${key}`}>
       <Form.Item
         name={field.name}
         label={field.label}
@@ -21,11 +21,11 @@ const SubFormDatePicker: React.FC<Props> = ({ field, disableAll, key }) => {
           showTime={field.showTime}
           disabled={disableAll}
           getPopupContainer={() =>
-            document.getElementById(`select-data-${key}`)!!
+            document.getElementById(`select-date-${key}`)!!
           }
           className="date-picker-content"
-          format={field.showTime ? "DD/MM/Y HH:mm" : "DD/MM/Y"}
-          placeholder={`Informe ${field.label.toLowerCase()}`}
+          format={field.showTime ? "DD/MM/YYYY HH:mm" : "DD/MM/YYYY"}
+          placeholder={`Inform ${field.label.toLowerCase()}`}
         />
       </Form.Item>
       {field.extra_name && field.extra_label && (

@@ -40,10 +40,10 @@ const SubFormBoolean: React.FC<Props> = ({ field, disableAll, key, form }) => {
           }}
         >
           <Radio.Button value={"true"} disabled={disableAll}>
-            Sim
+            Yes
           </Radio.Button>
           <Radio.Button value={"false"} disabled={disableAll}>
-            Não
+            No
           </Radio.Button>
         </Radio.Group>
       </Form.Item>

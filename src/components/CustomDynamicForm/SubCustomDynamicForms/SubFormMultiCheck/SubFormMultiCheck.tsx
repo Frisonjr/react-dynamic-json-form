@@ -23,8 +23,7 @@ const SubFormMultiCheck: React.FC<Props> = ({ field, disableAll, key }) => {
             type: 'array',
             max: field.max,
             min: field.min,
-            message: `Selecione até ${field.max} opções.`,
-          },
+            message: `Maximum ${field.max} options`,          },
           ...(field.required ? defaultFormRules : []),
         ]}
       >
